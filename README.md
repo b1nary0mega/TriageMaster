@@ -23,6 +23,12 @@ Invoke-Triage -TriageRoot 'D:\investigations\CASE123\files' -DownloadTools -Verb
 ## Logging
 All actions write to `triage_run.log` under the triage root by default.
 
+## License
+This project is licensed under the **GNU GPL v3.0 or later (GPL-3.0-or-later)**.
+You may use, modify, and distribute this software (including commercially) **only**
+under the GPL, with source code availability and preservation of copyright
+and license notices. See LICENSE for details.
+
 ---
 
 # Copilot Prompt + Output
