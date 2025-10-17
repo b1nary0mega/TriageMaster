@@ -26,7 +26,7 @@ Get-ZimmermanTool -ToolName 'PECmd' -ZipUrl 'https://download.ericzimmermanstool
             Invoke-WebRequest -Uri $ZipUrl -OutFile $zipPath -UseBasicParsing -ErrorAction Stop
             Expand-Archive -Path $zipPath -DestinationPath $toolPath -Force
         } catch {
-            throw "Failed to download/extract $ToolName: $($_.Exception.Message)"
+            throw ("Failed to download/extract {0}: {1}" -f $ToolName, $_.Exception.Message)
         }
         Write-Log -Message "$ToolName extracted to $toolPath" -LogFile $LogFile
     }
