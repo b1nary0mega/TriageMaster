@@ -10,7 +10,7 @@ This started as a tool to assist with the HTB CTF "Holmes". After much cleanup a
 This project is licensed under the **GNU GPL v3.0 or later (GPL-3.0-or-later)**.
 You may use, modify, and distribute this software (including commercially) **only**
 under the GPL, with source code availability and preservation of copyright
-and license notices. See LICENSE for details.
+and license notices. See `gpl-3.0.txt` for details.
 
 ---
 
