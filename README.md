@@ -29,10 +29,12 @@ All actions write to `triage_run.log` under the triage root by default.
 
 <blockquote>
 Original Prompt:
-> I have a rats nest of some powrshell code I've thrown together over time. Can you help me clean up, organize, and document better if I upload?
+
+  > I have a rats nest of some powrshell code I've thrown together over time. Can you help me clean up, organize, and document better if I upload?
 
 Copilot Response:
-> Below is a quick triage of what you had, the cleaned, modular version I produced, and how to run it right away. I also packaged everything as a ready‑to‑import PowerShell module.
+
+  > Below is a quick triage of what you had, the cleaned, modular version I produced, and how to run it right away. I also packaged everything as a ready‑to‑import PowerShell module.
 
 ---
 
