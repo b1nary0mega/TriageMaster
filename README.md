@@ -14,6 +14,11 @@ and license notices. See LICENSE for details.
 
 ---
 
+## Warranty
+This project is provided as is. The person, coporation and/or entity running this code acknowledges and accepts **all** responsibility for (a) knowing what the code does, (b) not running this in a production environment and (c) accepting responsibility for any adverse effects of running said code.
+
+---
+
 ## Install / Import
 ```powershell
 Import-Module .\TriageMaster.psd1 -Force
