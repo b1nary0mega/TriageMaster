@@ -21,7 +21,7 @@ Get-ZimmermanTool -ToolName 'PECmd' -ZipUrl 'https://download.ericzimmermanstool
     $zipPath = Join-Path $ToolsRoot "$ToolName.zip"
     $toolPath = Join-Path $ToolsRoot $ToolName
     if (-not (Test-Path -LiteralPath $toolPath)){
-        Write-Log -Message "Downloading $ToolName from $ZipUrl to $zipPath" -LogFile $LogFile
+        Write-Log -Message ('Downloading {0} from {1} to {2}' -f $ToolName, $ZipUrl, $ZipPath) -LogFile $LogFile
         try {
             Invoke-WebRequest -Uri $ZipUrl -OutFile $zipPath -UseBasicParsing -ErrorAction Stop
             Expand-Archive -Path $zipPath -DestinationPath $toolPath -Force
