@@ -4,6 +4,16 @@ An investigative tool for processing \[mostly\] KAPE triages, but will also work
 
 This started as a tool to assist with the HTB CTF "Holmes". After much cleanup and passing the code to copilot + GPT5, this is the result of an AI-assisted refactoring of my initial triage scripts into a reusable PowerShell module. It provides a logged approach to generating an encriched timeline of events based on registry hives, page files, event logs and more.
 
+---
+
+## License
+This project is licensed under the **GNU GPL v3.0 or later (GPL-3.0-or-later)**.
+You may use, modify, and distribute this software (including commercially) **only**
+under the GPL, with source code availability and preservation of copyright
+and license notices. See LICENSE for details.
+
+---
+
 ## Install / Import
 ```powershell
 Import-Module .\TriageMaster.psd1 -Force
@@ -22,12 +32,6 @@ Invoke-Triage -TriageRoot 'D:\investigations\CASE123\files' -DownloadTools -Verb
 
 ## Logging
 All actions write to `triage_run.log` under the triage root by default.
-
-## License
-This project is licensed under the **GNU GPL v3.0 or later (GPL-3.0-or-later)**.
-You may use, modify, and distribute this software (including commercially) **only**
-under the GPL, with source code availability and preservation of copyright
-and license notices. See LICENSE for details.
 
 ---
 
