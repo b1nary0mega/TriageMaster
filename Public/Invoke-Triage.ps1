@@ -188,7 +188,10 @@ Invoke-Triage -TriageRoot 'D:\investigations\CASE123\files' -DownloadTools
                         "$fallback`tTeamViewer`tNA`tTeamViewer`t$($_ -replace '\r?\n',' ')" | Out-File $tvOut -Append -Encoding UTF8
                     }
                 }
-                $count = (Test-Path $tvOut) ? (Get-Content $tvOut).Count : 0
+                $count = 0
+                if (Test-Path -LiteralPath $tvOut) {
+                    $count = (Get-Content -LiteralPath $tvOut -ErrorAction SilentlyContinue).Count
+                }
                 Write-Log -Message "TeamViewer entries appended: $count -> $tvOut" -LogFile $LogFile
             }
             default {
