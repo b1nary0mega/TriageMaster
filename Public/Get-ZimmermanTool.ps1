@@ -21,14 +21,20 @@ Get-ZimmermanTool -ToolName 'PECmd' -ZipUrl 'https://download.ericzimmermanstool
     $zipPath = Join-Path $ToolsRoot "$ToolName.zip"
     $toolPath = Join-Path $ToolsRoot $ToolName
     if (-not (Test-Path -LiteralPath $toolPath)){
-        Write-Log -Message ('Downloading {0} from {1} to {2}' -f $ToolName, $ZipUrl, $ZipPath) -LogFile $LogFile
-        try {
-            Invoke-WebRequest -Uri $ZipUrl -OutFile $zipPath -UseBasicParsing -ErrorAction Stop
-            Expand-Archive -Path $zipPath -DestinationPath $toolPath -Force
-        } catch {
-            throw ("Failed to download/extract {0}: {1}" -f $ToolName, $_.Exception.Message)
-        }
-        Write-Log -Message "$ToolName extracted to $toolPath" -LogFile $LogFile
+        Write-Log -Message "Downloading $ToolName from $ZipUrl to $zipPath" -LogFile $LogFile
+        $retries = 3; $delay = 2
+        for ($i=1; $i -le $retries; $i++) {
+            try {
+                Write-Log -Message ('Downloading {0} from {1} to {2}' -f $ToolName, $ZipUrl, $zipPath) -LogFile $LogFile
+                Invoke-WebRequest -Uri $ZipUrl -OutFile $ZipPath -UseBasicParsing -ErrorAction Stop
+                Expand-Archive -Path $ZipPath -DestinationPath $toolPath -Force
+                Write-Log -Message "$ToolName extracted to $toolPath" -LogFile $LogFile
+                break
+            } catch {
+                if ($i -eq $retries) { throw ("Failed to download/extract {0}: {1}" -f $ToolName, $_.Exception.Message) }
+                Start-Sleep -Seconds $delay; $delay *= 2
+            }
+        } 
     }
     $exe = Get-ChildItem -Path $toolPath -Filter "$ToolName.exe" -Recurse -ErrorAction SilentlyContinue | Select-Object -First 1 -ExpandProperty FullName
     if (-not $exe){ throw "Could not locate $ToolName.exe under $toolPath" }
